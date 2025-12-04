@@ -18,8 +18,13 @@ fn main(){
             .read_line(&mut guess)
             .expect("Failed to read line");
         // could've been 'io::stdin().read_line(&mut guess).expect("failed...);
-
-        let guess: u32 = guess.trim().parse(){
+        
+        if guess.trim() == "quit" { 
+            println!("Goodbye!");
+            break;
+        }
+        
+        let guess: u32 = match guess.trim().parse(){
             Ok(num) => num,
             Err(_) => continue,
         };
